@@ -94,6 +94,8 @@ export default class Presentation extends React.Component {
               <ListItem><Link href="http://tcoopman.github.io/game-of-life/">Game of Life</Link></ListItem>
               <ListItem><Link href="https://github.com/rtfeldman/elm-css/">Elm-css</Link></ListItem>
               <ListItem><Link href="https://github.com/isRuslan/awesome-elm">awesome-elm resources</Link></ListItem>
+              <ListItem><Link href="slides">TODO link to the slides on github</Link></ListItem>
+              <ListItem><Link href="slides">TODO link to the slides on slideshare</Link></ListItem>
             </List>
           </Slide>
         </Deck>
