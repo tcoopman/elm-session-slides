@@ -17,6 +17,7 @@ import {
   List,
   Markdown,
   Quote,
+  S,
   Slide,
   Spectacle,
   Text
@@ -38,8 +39,8 @@ require("spectacle/lib/themes/default/index.css");
 
 const images = {
   elmLogo: require("../assets/elm-logo.png"),
-  city: require("../assets/city.jpg"),
-  kat: require("../assets/kat.png"),
+  brainstorm: require("../assets/brainstorm.jpg"),
+  examples: require("../assets/examples.png"),
   logo: require("../assets/formidable-logo.svg"),
   markdown: require("../assets/markdown.png")
 };
@@ -47,7 +48,7 @@ const images = {
 preloader(images);
 
 const theme = createTheme({
-  primary: "#ff4081"
+  primary: "#60B4CC"
 });
 
 export default class Presentation extends React.Component {
@@ -55,112 +56,45 @@ export default class Presentation extends React.Component {
     return (
       <Spectacle theme={theme}>
         <Deck transition={["zoom", "slide"]} transitionDuration={500}>
-          <Slide transition={["zoom"]} bgColor="primary">
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              An introduction to
-            </Heading>
-            <Heading size={1} fit caps>
-              Elm
-            </Heading>
-            <Heading size={1} fit caps textColor="black">
-              No more runtime errors
-            </Heading>
+          <Slide transition={["slide"]} bgColor="white" notes="">
+            <Image src={images.elmLogo.replace("/", "")} margin="0px auto 40px" height="400px"/>
+            <Text>
+              An introduction to <S type="bold">Elm</S>
+            </Text>
+            <Text>by <Link href="https://twitter.com/tcoopman">@tcoopman</Link></Text>
           </Slide>
-          <Slide transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
-            <Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>
-            <Heading size={2} caps fit textColor="primary" textFont="primary">
-              Wait what?
-            </Heading>
+          <Slide transition={["zoom"]} bgColor="white">
+            <Image src={images.brainstorm.replace("/", "")} margin="0px auto" height="700px"/>
+          </Slide>
+          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+            <List>
+              <Appear><ListItem>Some examples</ListItem></Appear>
+              <Appear><ListItem>What is Elm</ListItem></Appear>
+              <Appear><ListItem>Basic introduction</ListItem></Appear>
+              <Appear><ListItem>Why should I care?</ListItem></Appear>
+              <Appear><ListItem>Questions, discussions,...</ListItem></Appear>
+            </List>
+          </Slide>
+          <Slide transition={["zoom"]} bgColor="white">
+            <Link href="http://elm-lang.org/"><Image src={images.examples.replace("/", "")} margin="0px auto" height="500px"/></Link>
+          </Slide>
+          <Slide transition={["slide"]} bgColor="black" >
+            <Image src={images.elmLogo.replace("/", "")} margin="0px auto 40px" height="400px"/>
           </Slide>
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
             <CodePane
-              lang="jsx"
+              lang="haskell"
               source={require("raw!../assets/deck.example")}
               margin="20px auto"
             />
           </Slide>
-          <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
-            <Appear fid="1">
-              <Heading size={1} caps fit textColor="primary">
-                Full Width
-              </Heading>
-            </Appear>
-            <Appear fid="2">
-              <Heading size={1} caps fit textColor="tertiary">
-                Adjustable Darkness
-              </Heading>
-            </Appear>
-            <Appear fid="3">
-              <Heading size={1} caps fit textColor="primary">
-                Background Imagery
-              </Heading>
-            </Appear>
-          </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading caps fit>Flexible Layouts</Heading>
-            <Layout>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Left
-                </Heading>
-              </Fill>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Right
-                </Heading>
-              </Fill>
-            </Layout>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="black">
-            <BlockQuote>
-              <Quote>Wonderfully formatted quotes</Quote>
-              <Cite>Ken Wheeler</Cite>
-            </BlockQuote>
-          </Slide>
-          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
-            <Heading caps fit size={1} textColor="primary">
-              Inline Markdown
-            </Heading>
-            <Markdown>
-              {`
-![Markdown Logo](${images.markdown.replace("/", "")})
-
-You can write inline images, [Markdown Links](http://commonmark.org), paragraph text and most other markdown syntax
-* Lists too!
-* With ~~strikethrough~~ and _italic_
-* And lets not forget **bold**
-              `}
-            </Markdown>
-          </Slide>
-          <Slide transition={["slide", "spin"]} bgColor="primary">
-            <Heading caps fit size={1} textColor="tertiary">
-              Smooth
-            </Heading>
-            <Heading caps fit size={1} textColor="secondary">
-              Combinable Transitions
-            </Heading>
-          </Slide>
-          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Slide>
             <List>
-              <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-              <Appear><ListItem>Autofit text</ListItem></Appear>
-              <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-              <Appear><ListItem>React-Router navigation</ListItem></Appear>
-              <Appear><ListItem>PDF export</ListItem></Appear>
-              <Appear><ListItem>And...</ListItem></Appear>
+              <ListItem><Link href="http://elm-lang.org/">Elm</Link></ListItem>
+              <ListItem><Link href="http://tcoopman.github.io/game-of-life/">Game of Life</Link></ListItem>
+              <ListItem><Link href="https://github.com/rtfeldman/elm-css/">Elm-css</Link></ListItem>
+              <ListItem><Link href="https://github.com/isRuslan/awesome-elm">awesome-elm resources</Link></ListItem>
             </List>
-          </Slide>
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps fit textColor="tertiary">
-              Your presentations are interactive
-            </Heading>
-            <Interactive/>
-          </Slide>
-          <Slide transition={["spin", "slide"]} bgColor="tertiary">
-            <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-              Made with love in Seattle by
-            </Heading>
-            <Link href="http://www.formidablelabs.com"><Image width="100%" src={images.logo}/></Link>
           </Slide>
         </Deck>
       </Spectacle>
