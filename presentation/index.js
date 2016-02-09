@@ -53,7 +53,8 @@ preloader(images);
 const theme = createTheme({
   primary: "#60B4CC",
   secondary: "rgb(92, 238, 102)",
-  text: "black"
+  text: "black",
+  flash: "rgb(240, 28, 28)"
 });
 
 export default class Presentation extends React.Component {
@@ -75,7 +76,7 @@ export default class Presentation extends React.Component {
               <Appear><Text padding="10px" textSize="4rem">Some examples</Text></Appear>
               <Appear><Text padding="10px" textSize="4rem">Why should I care?</Text></Appear>
               <Appear><Text padding="10px" textSize="4rem">What is Elm</Text></Appear>
-              <Appear><Text padding="10px" textSize="4rem">Basic introduction</Text></Appear>
+              <Appear><Text padding="10px" textSize="4rem">Introduction and examples</Text></Appear>
               <Appear><Text padding="10px" textSize="4rem">Questions, discussions,...</Text></Appear>
           </Slide>
           <Slide transition={["zoom"]} bgColor="white">
@@ -90,21 +91,29 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
           <Slide textColor="text">
-            <Heading>And why not?</Heading>
+            <Heading>Any reason why not?</Heading>
             <List>
               <Appear><ListItem>It's new (version 0.16)</ListItem></Appear>
               <Appear><ListItem>This means there are some quirks</ListItem></Appear>
               <Appear><ListItem>But these are things being worked on (for example in 0.17)</ListItem></Appear>
+              <Appear><ListItem>You have to find out things for yourself</ListItem></Appear>
             </List>
           </Slide>
           <Slide>
             <Heading>So should you care?</Heading>
             <Appear><Heading caps textColor="black" margin="40px" textSize="10rem">yes!</Heading></Appear>
-            <Appear><Heading caps textColor="black" margin="40px" textSize="10rem">of course!</Heading></Appear>
-            <Appear><Heading caps textColor="black" margin="40px" textSize="1.5rem">why else would you be here?</Heading></Appear>
+            <Appear><Heading caps textColor="flash" margin="40px" textSize="10rem">of course!</Heading></Appear>
           </Slide>
-          <Slide transition={["slide"]} bgColor="white" >
+          <Slide transition={["slide"]} bgColor="white" notes="">
             <Image src={images.elmLogo.replace("/", "")} margin="0px auto 40px" height="400px"/>
+            <Heading textColor="black">
+              <S type="bold">Elm</S>
+            </Heading>
+            <Text>created by Evan Czaplicki <Link href="https://twitter.com/czaplic">@czaplic</Link></Text>
+          </Slide>
+          <Slide>
+            <Heading>Why are we doing slides?</Heading>
+            <Appear><Heading caps textColor="black" margin="40px" textSize="10rem">Show me the code!</Heading></Appear>
           </Slide>
           <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
             <CodePane
@@ -113,8 +122,19 @@ export default class Presentation extends React.Component {
               margin="20px auto"
             />
           </Slide>
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+            <Link href="http://elm-lang.org/examples/binary-tree">
+              <CodePane
+                lang="haskell"
+                source={require("raw!../assets/binary-trees.example")}
+                margin="20px auto"
+              />
+            </Link>
+          </Slide>
           <Slide>
-            <Link href="http://elm-lang.org/examples/binary-tree">Binary tree example</Link>
+            <Link href="http://tcoopman.github.io/game-of-life/">
+              <Image src={images.gol.replace("/", "")} margin="0px auto 40px" height="400px"/>
+            </Link>
           </Slide>
           <Slide>
             <Link href="http://klaftertief.github.io/package.elm-lang.org/">
@@ -122,16 +142,8 @@ export default class Presentation extends React.Component {
             </Link>
           </Slide>
           <Slide>
-            <Layout>
-                <Link href="http://recordit.co/gi7U8GyK7C">
-                  <Image src={images.elmTesting.replace("/", "")} margin="0px auto 40px" height="400px" />
-                </Link>
-            </Layout>
-            <Link href="https://github.com/brendan-jefferis/test-runner">Test runner</Link>
-          </Slide>
-          <Slide>
-            <Link href="http://tcoopman.github.io/game-of-life/">
-              <Image src={images.gol.replace("/", "")} margin="0px auto 40px" height="400px"/>
+            <Link href="http://recordit.co/gi7U8GyK7C">
+              <Image src={images.elmTesting.replace("/", "")} margin="0px auto 40px" height="400px" />
             </Link>
           </Slide>
           <Slide>
@@ -141,8 +153,8 @@ export default class Presentation extends React.Component {
               <ListItem><Link href="https://github.com/rtfeldman/elm-css/">Elm-css</Link></ListItem>
               <ListItem><Link href="https://github.com/isRuslan/awesome-elm">awesome-elm resources</Link></ListItem>
               <ListItem><Link href="http://www.elm-tutorial.org/">elm tutorial</Link></ListItem>
-              <ListItem><Link href="slides">TODO link to the slides on github</Link></ListItem>
-              <ListItem><Link href="slides">TODO link to the slides on slideshare</Link></ListItem>
+              <ListItem><Link href="https://github.com/brendan-jefferis/test-runner">Test runner</Link></ListItem>
+              <ListItem><Link href="https://github.com/tcoopman/elm-session-slides">source to slides</Link></ListItem>
             </List>
           </Slide>
         </Deck>
