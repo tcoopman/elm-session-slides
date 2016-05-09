@@ -45,7 +45,8 @@ const images = {
   examples: require("../assets/examples.png"),
   hoogle: require("../assets/hoogle.png"),
   logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
+  markdown: require("../assets/markdown.png"),
+	jeep: require("../assets/jeep.png")
 };
 
 preloader(images);
@@ -65,22 +66,48 @@ export default class Presentation extends React.Component {
           <Slide transition={["slide"]} bgColor="white" notes="">
             <Image src={images.elmLogo.replace("/", "")} margin="0px auto 40px" height="400px"/>
             <Text>
-              An introduction to <S type="bold">Elm</S>
+              A very brief introduction to <S type="bold">Elm</S>
             </Text>
             <Text>by <Link href="https://twitter.com/tcoopman">@tcoopman</Link></Text>
+            <Text><Link href="https://thomascoopman.eu">https://thomascoopman.eu</Link></Text>
           </Slide>
-          <Slide transition={["zoom"]} bgColor="white">
-            <Image src={images.brainstorm.replace("/", "")} margin="-200px auto" height="800px"/>
-          </Slide>
-          <Slide transition={["fade"]} bgColor="secondary">
-              <Appear><Text padding="10px" textSize="4rem">Some examples</Text></Appear>
-              <Appear><Text padding="10px" textSize="4rem">Why should I care?</Text></Appear>
+					<Slide notes="A Quick show of hands, how many heard of Elm, how many used it? Haskell?">
+					<Text>Little time, much to talk about</Text>
+					</Slide>
+          <Slide transition={["fade"]} bgColor="secondary" notes="Because our time is very short, I'm going to some TDD">
+              <Appear><Text padding="10px" textSize="4rem">You already love functional</Text></Appear>
+              <Appear><Text padding="10px" textSize="4rem">And very little time</Text></Appear>
+              <Appear><Text padding="10px" textSize="4rem">So...</Text></Appear>
               <Appear><Text padding="10px" textSize="4rem">What is Elm</Text></Appear>
-              <Appear><Text padding="10px" textSize="4rem">Introduction and examples</Text></Appear>
-              <Appear><Text padding="10px" textSize="4rem">Questions, discussions,...</Text></Appear>
+              <Appear><Text padding="10px" textSize="4rem">The bowling kata</Text></Appear>
+              <Appear><Text padding="10px" textSize="4rem">Questions</Text></Appear>
           </Slide>
-          <Slide transition={["zoom"]} bgColor="white">
-            <Link href="http://elm-lang.org/"><Image src={images.examples.replace("/", "")} margin="0px auto" height="500px"/></Link>
+					<Slide notes="Who heard of Babel? - Elm compiles to javascript">
+						<Heading size="2">Elm?</Heading>
+              <Appear><Text padding="10px" textSize="4rem">Haskell in the browser</Text></Appear>
+              <Appear><Text padding="10px" textSize="4rem">Simplified Haskell in the browser</Text></Appear>
+              <Appear><Text padding="10px" textSize="4rem">Compiles to javascript</Text></Appear>
+              <Appear><Text padding="10px" textSize="4rem">No runtime errors</Text></Appear>
+					</Slide>
+					<Slide notes="How many know the bowling kata?">
+						<Text>Lets try the bowling Kata</Text>
+					</Slide>
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="Maybe..">
+						<Heading size="3">No null</Heading>
+            <CodePane
+              lang="haskell"
+              source={require("raw!../assets/maybe.example")}
+              margin="20px auto"
+            />
+          </Slide>
+          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="Clean partial application">
+						<Heading size="3">Clean partial application</Heading>
+    <Text>A function that takes a function with multiple parameters and returns a function with fewer parameters.</Text>
+            <CodePane
+              lang="haskell"
+              source={require("raw!../assets/partial.elm")}
+              margin="20px auto"
+            />
           </Slide>
           <Slide notes="compiler, enforced semantic versioning of libraries" bgColor="primary" textColor="text">
             <Heading>Why should you care?</Heading>
@@ -93,16 +120,11 @@ export default class Presentation extends React.Component {
           <Slide textColor="text">
             <Heading>Any reason why not?</Heading>
             <List>
-              <Appear><ListItem>It's new (version 0.16)</ListItem></Appear>
+              <Appear><ListItem>It's rather new (version 0.17 just (to be) released)</ListItem></Appear>
               <Appear><ListItem>This means there are some quirks</ListItem></Appear>
-              <Appear><ListItem>But these are things being worked on (for example in 0.17)</ListItem></Appear>
+              <Appear><ListItem>And that things are still changing</ListItem></Appear>
               <Appear><ListItem>You have to find out things for yourself</ListItem></Appear>
             </List>
-          </Slide>
-          <Slide>
-            <Heading>So should you care?</Heading>
-            <Appear><Heading caps textColor="black" margin="40px" textSize="10rem">yes!</Heading></Appear>
-            <Appear><Heading caps textColor="flash" margin="40px" textSize="10rem">of course!</Heading></Appear>
           </Slide>
           <Slide transition={["slide"]} bgColor="white" notes="">
             <Image src={images.elmLogo.replace("/", "")} margin="0px auto 40px" height="400px"/>
@@ -112,38 +134,18 @@ export default class Presentation extends React.Component {
             <Text>created by Evan Czaplicki <Link href="https://twitter.com/czaplic">@czaplic</Link></Text>
           </Slide>
           <Slide>
-            <Heading>Why are we doing slides?</Heading>
-            <Appear><Heading caps textColor="black" margin="40px" textSize="10rem">Show me the code!</Heading></Appear>
-          </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
-            <CodePane
-              lang="haskell"
-              source={require("raw!../assets/deck.example")}
-              margin="20px auto"
-            />
-          </Slide>
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
-            <Link href="http://elm-lang.org/examples/binary-tree">
-              <CodePane
-                lang="haskell"
-                source={require("raw!../assets/binary-trees.example")}
-                margin="20px auto"
-              />
-            </Link>
-          </Slide>
-          <Slide>
             <Link href="http://tcoopman.github.io/game-of-life/">
               <Image src={images.gol.replace("/", "")} margin="0px auto 40px" height="400px"/>
             </Link>
           </Slide>
           <Slide>
-            <Link href="http://klaftertief.github.io/package.elm-lang.org/">
-              <Image src={images.hoogle.replace("/", "")} margin="0px auto 40px" height="400px"/>
+            <Link href="http://www.ruslans.com/lunar-viz/">
+              <Image src={images.jeep.replace("/", "")} margin="0px auto 40px" height="400px"/>
             </Link>
           </Slide>
           <Slide>
-            <Link href="http://recordit.co/gi7U8GyK7C">
-              <Image src={images.elmTesting.replace("/", "")} margin="0px auto 40px" height="400px" />
+            <Link href="http://klaftertief.github.io/package.elm-lang.org/">
+              <Image src={images.hoogle.replace("/", "")} margin="0px auto 40px" height="400px"/>
             </Link>
           </Slide>
           <Slide>
@@ -153,7 +155,6 @@ export default class Presentation extends React.Component {
               <ListItem><Link href="https://github.com/rtfeldman/elm-css/">Elm-css</Link></ListItem>
               <ListItem><Link href="https://github.com/isRuslan/awesome-elm">awesome-elm resources</Link></ListItem>
               <ListItem><Link href="http://www.elm-tutorial.org/">elm tutorial</Link></ListItem>
-              <ListItem><Link href="https://github.com/brendan-jefferis/test-runner">Test runner</Link></ListItem>
               <ListItem><Link href="https://github.com/tcoopman/elm-session-slides">source to slides</Link></ListItem>
             </List>
           </Slide>

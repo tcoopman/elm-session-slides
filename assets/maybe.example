@@ -5,6 +5,6 @@ type Maybe a
     = Just a
     | Nothing
 
-head [1, 2, 3] = Just 1
-head [] = Nothing
 
+List.head [0, 1, 2] = Just 0
+List.head [] = Nothing
